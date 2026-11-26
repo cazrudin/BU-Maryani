@@ -1,0 +1,10 @@
+{
+  "name": "Toko Oleh Oleh Bu Maryani",
+  "description": "Toko online snack dan oleh-oleh khas Klaten. Pesan langsung via WhatsApp, update stok real-time, dan kelola toko mudah dari HP.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

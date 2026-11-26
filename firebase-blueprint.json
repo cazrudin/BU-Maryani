@@ -1,0 +1,71 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Katalog snack dan oleh-oleh khas Klaten",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Nama produk makanan/snack" },
+        "category": { "type": "string", "description": "Kategori produk (keripik, manis, gurih, paket, minuman)" },
+        "price": { "type": "number", "description": "Harga jual dalam Rupiah" },
+        "unit": { "type": "string", "description": "Satuan penjualan (bungkus, toples, besek, kg, box)" },
+        "stock": { "type": "number", "description": "Sisa stok barang siap kirim" },
+        "minOrder": { "type": "number", "description": "Jumlah pesanan minimal" },
+        "weightGram": { "type": "number", "description": "Estimasi berat dalam gram" },
+        "image": { "type": "string", "description": "URL foto produk" },
+        "description": { "type": "string", "description": "Deskripsi rasa, bahan dan keunikan produk" },
+        "isPopular": { "type": "boolean", "description": "Tanda produk terlaris/unggulan" },
+        "isActive": { "type": "boolean", "description": "Status aktif produk di etalase" },
+        "createdAt": { "type": "string", "description": "Waktu pembuatan produk format ISO" }
+      },
+      "required": ["name", "price", "stock", "unit", "category"]
+    },
+    "StoreSettings": {
+      "title": "StoreSettings",
+      "description": "Pengaturan informasi toko dan kontak WhatsApp",
+      "type": "object",
+      "properties": {
+        "storeName": { "type": "string", "description": "Nama toko oleh-oleh" },
+        "tagline": { "type": "string", "description": "Slogan toko" },
+        "phone": { "type": "string", "description": "Nomor WhatsApp admin toko" },
+        "address": { "type": "string", "description": "Alamat fisik toko di Klaten" },
+        "city": { "type": "string", "description": "Kota toko" },
+        "openingHours": { "type": "string", "description": "Jam buka toko" },
+        "bankInfo": { "type": "string", "description": "Info rekening pembayaran" },
+        "adminPin": { "type": "string", "description": "PIN akses kelola admin" },
+        "notificationSoundEnabled": { "type": "boolean", "description": "Status audio notifikasi pesanan" },
+        "welcomeMessage": { "type": "string", "description": "Pesan sambutan" }
+      },
+      "required": ["storeName", "phone"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Pesanan belanja pelanggan",
+      "type": "object",
+      "properties": {
+        "orderNumber": { "type": "string", "description": "Nomor unik pesanan" },
+        "customer": { "type": "object", "description": "Data pelanggan" },
+        "items": { "type": "array", "description": "Daftar snack yang dibeli" },
+        "totalAmount": { "type": "number", "description": "Total tagihan dalam rupiah" },
+        "totalItems": { "type": "number", "description": "Jumlah total bungkus/item" },
+        "status": { "type": "string", "description": "Status pemrosesan pesanan" },
+        "createdAt": { "type": "string", "description": "Waktu pemesanan format ISO" }
+      },
+      "required": ["orderNumber", "totalAmount", "totalItems", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Koleksi produk snack toko yang dapat dibaca pelanggan dan dikelola admin"
+    },
+    "/settings/store": {
+      "schema": "StoreSettings",
+      "description": "Konfigurasi toko oleh-oleh Bu Maryani"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Koleksi transaksi pesanan pelanggan"
+    }
+  }
+}

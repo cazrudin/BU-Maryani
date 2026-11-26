@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      // Filter benign Vite websocket disconnection messages in dev environment
+      (function() {
+        const origConsoleError = console.error;
+        console.error = function(...args) {
+          if (typeof args[0] === 'string' && (args[0].includes('[vite]') || args[0].includes('vite-plugin-pwa'))) {
+            return;
+          }
+          origConsoleError.apply(console, args);
+        };
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#dc2626" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Bu Maryani" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <title>Pusat Oleh Oleh Klaten - Bu Maryani</title>
+    <meta name="description" content="PUSAT OLEH OLEH KLATEN - Bu Maryani Kios Pasar Klaten Sejak 1965. Grosir & Ecer snack, keripik paru, dodol, dan oleh-oleh otentik khas Klaten." />
+    <meta property="og:title" content="Pusat Oleh Oleh Klaten - Bu Maryani" />
+    <meta property="og:description" content="PUSAT OLEH OLEH KLATEN - Bu Maryani Kios Pasar Klaten Sejak 1965. Grosir & Ecer snack, keripik paru, dodol, dan oleh-oleh otentik khas Klaten." />
+    <meta property="og:image" content="/logo.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
